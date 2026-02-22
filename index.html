@@ -16,14 +16,19 @@
       padding: 0;
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       background: #f5f7fb;
       font-family: 'Inter', sans-serif;
       color: #0b1b33;
       line-height: 1.5;
-      scroll-behavior: smooth;
       overflow-x: hidden;
       width: 100%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
     }
     .container {
       max-width: 1300px;
@@ -33,7 +38,13 @@
     }
     /* mobile first adjustments */
     @media (max-width: 768px) {
-      .container { padding: 0 16px; }
+      body {
+        padding-top: 0;
+        margin-top: 0;
+      }
+      .container { 
+        padding: 0 16px; 
+      }
       h1 { font-size: 2.8rem !important; }
       .dynamic-title { white-space: normal !important; font-size: 1.2rem !important; }
       .hero { padding: 30px 0 40px !important; }
@@ -47,9 +58,6 @@
     @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     .slide-up { animation: slideUp 0.6s ease forwards; }
     .stagger-child > * { opacity: 0; animation: slideUp 0.5s ease forwards; }
-    .stagger-child > *:nth-child(1) { animation-delay: 0.1s; }
-    .stagger-child > *:nth-child(2) { animation-delay: 0.2s; }
-    .stagger-child > *:nth-child(3) { animation-delay: 0.3s; }
     /* navbar */
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
@@ -127,15 +135,29 @@
       text-decoration: none; font-size: 0.95rem;
     }
     footer { padding: 30px 0; text-align: center; color: #64748b; }
-    /* sample gallery page styles (embedded for demo, but will open new page) */
+    /* sample gallery page styles */
     .sample-page {
       max-width: 1300px; margin: 0 auto; padding: 20px;
     }
-    .sample-header { margin-bottom: 30px; }
-    .sample-header h1 { font-size: 2.5rem; }
+    .sample-header { 
+      margin-bottom: 30px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap;
+      padding-top: 10px;
+    }
+    .sample-header h1 { font-size: 2.2rem; }
+    .category-section { margin-bottom: 40px; }
+    .category-title { 
+      font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; 
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6); 
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
     .image-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px; margin-top: 30px;
+      gap: 15px; margin-top: 10px;
     }
     .image-grid img {
       width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px;
@@ -154,6 +176,10 @@
     .close {
       position: absolute; top: 25px; right: 35px; color: white; font-size: 40px;
       font-weight: bold; cursor: pointer; z-index: 1001;
+    }
+    .back-btn {
+      background: #4f46e5; color: white; padding: 10px 25px; border-radius: 50px; 
+      text-decoration: none; display: inline-block; margin-bottom: 20px;
     }
   </style>
 </head>
@@ -259,55 +285,94 @@
     <footer>© 2025 Akshay Barala — Anirudh Jewels</footer>
   </div>
 
-  <!-- Modal for full-screen images (hidden by default) -->
+  <!-- Modal for full-screen images -->
   <div id="imageModal" class="modal" onclick="closeModal()">
     <span class="close" onclick="closeModal()">&times;</span>
     <img class="modal-content" id="modalImage">
   </div>
 
-  <!-- Sample page content (hidden by default, shown when clicking the catalog) -->
+  <!-- Sample page content -->
   <div id="samplePageContainer" style="display: none;">
     <div class="sample-page">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:20px;">
-        <h1 style="font-size:2.2rem;">Sample 1 Raw Images</h1>
-        <a href="#" onclick="closeSamplePage(event)" style="background:#4f46e5; color:white; padding:10px 25px; border-radius:50px; text-decoration:none;">← Back to portfolio</a>
+      <div class="sample-header">
+        <h1>Sample 1 Images</h1>
+        <a href="#" onclick="closeSamplePage(event)" class="back-btn">← Back to portfolio</a>
       </div>
-      <p style="margin-bottom:20px; color:#334155;">GitHub images · click any for full screen</p>
-      <div class="image-grid" id="githubImageGrid"></div>
+      <p style="margin-bottom:30px; color:#334155;">Click any image for full screen</p>
+      
+      <!-- Raw Images (original set) -->
+      <div class="category-section">
+        <h2 class="category-title">📸 Raw Images</h2>
+        <div class="image-grid" id="rawImagesGrid"></div>
+      </div>
+      
+      <!-- Retouching: images 1.jpg to 12.jpg -->
+      <div class="category-section">
+        <h2 class="category-title">🖌️ Retouching</h2>
+        <div class="image-grid" id="retouchingGrid"></div>
+      </div>
+      
+      <!-- Background Change + AI Edited (combined group with only 3 images) -->
+      <div class="category-section">
+        <h2 class="category-title">🖼️ Background Change & AI Edited</h2>
+        <div class="image-grid" id="combinedGrid"></div>
+      </div>
     </div>
   </div>
 
   <script>
-    // List of all image filenames from IMG_9476.JPG to IMG_9779.JPG (approx)
-    function generateImageList() {
-      let images = [];
-      // we have from 9476 to 9779 (304 images) but let's generate up to 9779
-      for (let i = 9476; i <= 9779; i++) {
-        images.push(`IMG_${i}.JPG`);
-      }
-      return images;
-    }
-
-    const imageFilenames = generateImageList();
+    // ALL IMAGES FROM THE FINAL LIST
+    
+    // Raw images - original set (all images from previous combined list)
+    const rawImages = [
+      "IMG_9476.JPG", "IMG_9477.JPG", "IMG_9478.JPG", "IMG_9479.JPG", "IMG_9480.JPG",
+      "IMG_9481.JPG", "IMG_9482.JPG", "IMG_9483.JPG", "IMG_9484.JPG", "IMG_9485.JPG",
+      "IMG_9486.JPG", "IMG_9487.JPG", "IMG_9488.JPG", "IMG_9489.JPG", "IMG_9490.JPG",
+      "IMG_9491.JPG", "IMG_9492.JPG", "IMG_9493.JPG", "IMG_9494.JPG", "IMG_9495.JPG",
+      "IMG_9496.JPG", "IMG_9497.JPG", "IMG_9498.JPG", "IMG_9499.JPG", "IMG_9500.JPG",
+      "IMG_9534.JPG", "IMG_9591.JPG", "IMG_9592.JPG", "IMG_9604.JPG", "IMG_9605.JPG",
+      "IMG_9704.JPG", "IMG_9705.JPG"
+    ];
+    
+    // Retouching: 1.jpg to 12.jpg (including 1 (1).jpg)
+    const retouchingImages = [
+      "1 (1).jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", 
+      "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg"
+    ];
+    
+    // Combined group (Background Change + AI Edited) - only 3 images: 13.jpg, 14.jpg, 15.png
+    const combinedImages = [
+      "13.jpg", "14.jpg", "15.png"
+    ];
+    
     const baseUrl = 'https://raw.githubusercontent.com/AKSHAY-BARALA/PORTFOLIO-GRAPHIC-DESIGNER/main/Sample%201/';
 
-    // Preload grid into sample container
-    function renderImageGrid() {
-      const grid = document.getElementById('githubImageGrid');
+    // Function to render images in a given grid
+    function renderGrid(gridId, fileArray) {
+      const grid = document.getElementById(gridId);
       if (!grid) return;
       grid.innerHTML = '';
-      imageFilenames.forEach(filename => {
-        const imgUrl = baseUrl + filename;
-        const imgWrapper = document.createElement('img');
-        imgWrapper.src = imgUrl;
-        imgWrapper.alt = filename;
-        imgWrapper.loading = 'lazy';
-        imgWrapper.onerror = () => { imgWrapper.style.display = 'none'; }; // hide broken
-        imgWrapper.onclick = (e) => {
-          e.stopPropagation();
-          openFullscreen(imgUrl);
+      
+      if (fileArray.length === 0) {
+        grid.innerHTML = '<p style="grid-column:1/-1; color:#666; padding:20px;">No images in this category</p>';
+        return;
+      }
+      
+      fileArray.forEach(filename => {
+        const imgUrl = baseUrl + encodeURIComponent(filename);
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        img.alt = filename;
+        img.loading = 'lazy';
+        img.onerror = () => { 
+          // If image fails to load, hide it
+          img.style.display = 'none';
         };
-        grid.appendChild(imgWrapper);
+        img.onclick = (e) => {
+          e.stopPropagation();
+          openFullscreen(img.src);
+        };
+        grid.appendChild(img);
       });
     }
 
@@ -331,39 +396,46 @@
       }
     };
 
-    // Open sample page (replaces main content with sample page)
+    // Open sample page
     function openSamplePage(event) {
       event.preventDefault();
       document.querySelector('.container').style.display = 'none';
       document.getElementById('samplePageContainer').style.display = 'block';
-      renderImageGrid(); // ensure grid is rendered
+      
+      // Render all categories
+      renderGrid('rawImagesGrid', rawImages);
+      renderGrid('retouchingGrid', retouchingImages);
+      renderGrid('combinedGrid', combinedImages);
+      
+      // Scroll to top of sample page
+      window.scrollTo(0, 0);
     }
 
-    // Close sample page and show main portfolio
+    // Close sample page
     window.closeSamplePage = function(event) {
       if (event) event.preventDefault();
       document.getElementById('samplePageContainer').style.display = 'none';
       document.querySelector('.container').style.display = 'block';
+      window.scrollTo(0, 0);
     };
 
-    // Also handle direct link to catalog (for mobile)
+    // Attach event to catalog link
     document.getElementById('jewelCatalogLink').addEventListener('click', openSamplePage);
 
-    // Make sure modal is accessible
-    window.onclick = function(event) {
-      if (event.target === modal) {
-        closeModal();
-      }
+    // Ensure page starts at top on load
+    window.onload = function() {
+      window.scrollTo(0, 0);
     };
   </script>
 
-  <!-- Also add a simple fallback for modal close -->
+  <!-- Additional mobile styles -->
   <style>
-    .modal { display: none; }
-    #samplePageContainer { display: none; }
     @media (max-width:480px) {
       .hero-detail-card .detail-item i { font-size: 1.2rem; padding: 6px; }
       .work-card-creative { padding: 20px; }
+      .category-title { font-size: 1.4rem; }
+      .sample-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+      body { padding-top: 0; margin-top: 0; }
     }
   </style>
 </body>
