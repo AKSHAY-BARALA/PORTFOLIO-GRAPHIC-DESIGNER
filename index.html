@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Akshay Barala · creative designer</title>
-  <!-- Google Fonts: Inter + Playfair for accent -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -16,7 +16,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       background: #f5f7fb;
       font-family: 'Inter', sans-serif;
@@ -24,437 +23,145 @@
       line-height: 1.5;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      width: 100%;
     }
-
     .container {
       max-width: 1300px;
       margin: 0 auto;
-      padding: 0 30px;
+      padding: 0 20px;
+      width: 100%;
     }
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
+    /* mobile first adjustments */
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      h1 { font-size: 2.8rem !important; }
+      .dynamic-title { white-space: normal !important; font-size: 1.2rem !important; }
+      .hero { padding: 30px 0 40px !important; }
+      .hero-detail-card { padding: 16px !important; gap: 12px !important; }
+      .exp-creative-card { padding: 24px !important; }
+      .skill-chip-modern { padding: 12px 20px !important; font-size: 0.95rem !important; }
+      .contact-strip-modern { padding: 40px 25px !important; }
     }
-
-    @keyframes softGlow {
-      0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.3); }
-      70% { box-shadow: 0 0 0 18px rgba(79, 70, 229, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideRight {
-      from { opacity: 0; transform: translateX(-40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes fadeScale {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* base animation classes */
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .animate-glow {
-      animation: softGlow 3s infinite;
-    }
-
-    .slide-up {
-      animation: slideUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-    }
-
-    .slide-right {
-      animation: slideRight 0.8s 0.2s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-      opacity: 0;
-    }
-
-    .fade-scale {
-      animation: fadeScale 0.7s 0.4s forwards;
-      opacity: 0;
-    }
-
-    /* staggered children */
-    .stagger-child > * {
-      opacity: 0;
-      animation: slideUp 0.5s ease-out forwards;
-    }
-
+    /* animations */
+    @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-up { animation: slideUp 0.6s ease forwards; }
+    .stagger-child > * { opacity: 0; animation: slideUp 0.5s ease forwards; }
     .stagger-child > *:nth-child(1) { animation-delay: 0.1s; }
     .stagger-child > *:nth-child(2) { animation-delay: 0.2s; }
     .stagger-child > *:nth-child(3) { animation-delay: 0.3s; }
-    .stagger-child > *:nth-child(4) { animation-delay: 0.4s; }
-    .stagger-child > *:nth-child(5) { animation-delay: 0.5s; }
-    .stagger-child > *:nth-child(6) { animation-delay: 0.6s; }
-
-    /* ===== creative professional styles ===== */
+    /* navbar */
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(100, 116, 139, 0.15);
-      flex-wrap: wrap;
-      backdrop-filter: blur(4px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(245, 247, 251, 0.7);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; border-bottom: 1px solid rgba(100,116,139,0.15);
+      flex-wrap: wrap; gap: 15px;
     }
-
     .logo {
-      font-weight: 800;
-      font-size: 2rem;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #0b1b33 0%, #4f46e5 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      transition: all 0.3s;
+      font-weight: 800; font-size: 1.8rem;
+      background: linear-gradient(135deg, #0b1b33, #4f46e5);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    .logo span {
-      background: linear-gradient(135deg, #4f46e5, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-style: italic;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #1e293b;
-      transition: 0.2s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0%;
-      height: 3px;
-      background: linear-gradient(90deg, #4f46e5, #a78bfa);
-      transition: width 0.3s;
-      border-radius: 6px;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      padding: 50px 0 70px;
-    }
-
-    .hero-content {
-      flex: 1 1 450px;
-    }
-
+    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: #1e293b; }
+    /* hero */
+    .hero { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; padding: 40px 0; }
+    .hero-content { flex: 1 1 400px; }
     .floating-badge {
-      display: inline-block;
-      background: rgba(79, 70, 229, 0.12);
-      backdrop-filter: blur(4px);
-      padding: 10px 24px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #4f46e5;
-      border: 1px solid rgba(79, 70, 229, 0.25);
-      margin-bottom: 28px;
-      animation: float 5s ease-in-out infinite;
+      display: inline-block; background: rgba(79,70,229,0.12); padding: 8px 20px;
+      border-radius: 60px; font-weight: 600; color: #4f46e5; border: 1px solid rgba(79,70,229,0.25);
+      margin-bottom: 20px; font-size: 0.9rem;
     }
-
-    .hero-content h1 {
-      font-size: 4.2rem;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-
-    .first-name {
-      background: linear-gradient(145deg, #0b1b33, #2d3a5e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .last-name-grad {
-      background: linear-gradient(145deg, #4f46e5, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      display: inline-block;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .dynamic-title {
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #334155;
-      margin-bottom: 30px;
-      border-right: 3px solid #4f46e5;
-      display: inline-block;
-      padding-right: 10px;
-      white-space: nowrap;
-      animation: blinkCursor 1s step-end infinite;
-    }
-
-    @keyframes blinkCursor {
-      0%, 100% { border-color: #4f46e5; }
-      50% { border-color: transparent; }
-    }
-
+    .hero-content h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+    .first-name { background: linear-gradient(145deg, #0b1b33, #2d3a5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .last-name-grad { background: linear-gradient(145deg, #4f46e5, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+    .dynamic-title { font-size: 1.3rem; color: #334155; border-right: 3px solid #4f46e5; display: inline-block; padding-right: 10px; }
     .hero-detail-card {
-      background: white;
-      border-radius: 50px;
-      padding: 20px 28px;
-      box-shadow: 0 30px 40px -25px rgba(0,0,0,0.15);
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      align-items: center;
-      margin: 30px 0 20px;
-      border: 1px solid rgba(203, 213, 225, 0.4);
-      backdrop-filter: blur(10px);
+      background: white; border-radius: 40px; padding: 20px; box-shadow: 0 20px 30px -15px rgba(0,0,0,0.1);
+      display: flex; flex-wrap: wrap; gap: 16px; margin: 20px 0; border: 1px solid #e2e8f0;
     }
-
-    .detail-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .detail-item i {
-      font-size: 1.8rem;
-      color: #4f46e5;
-      background: #eef2ff;
-      padding: 10px;
-      border-radius: 50%;
-    }
-
-    .hero-image {
-      flex: 1 1 360px;
-      background: radial-gradient(circle at 70% 30%, rgba(79, 70, 229, 0.1) 0%, transparent 60%);
-      min-height: 380px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .creative-shape {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      animation: float 7s ease-in-out infinite;
-    }
-
-    .main-icon {
-      font-size: 8rem;
-      color: #4f46e5;
-      filter: drop-shadow(0 15px 20px rgba(79, 70, 229, 0.25));
-      transition: transform 0.3s;
-    }
-
-    .floating-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .floating-elements i {
-      position: absolute;
-      color: #4f46e5;
-      opacity: 0.3;
-      animation: float 8s infinite;
-    }
-
-    .floating-elements i:nth-child(1) { top: 10%; left: 10%; font-size: 2rem; animation-delay: 0s; }
-    .floating-elements i:nth-child(2) { bottom: 20%; right: 15%; font-size: 2.5rem; animation-delay: 1s; }
-    .floating-elements i:nth-child(3) { top: 30%; right: 20%; font-size: 1.8rem; animation-delay: 2s; }
-
+    .detail-item { display: flex; align-items: center; gap: 10px; }
+    .detail-item i { font-size: 1.4rem; color: #4f46e5; background: #eef2ff; padding: 8px; border-radius: 50%; }
+    .hero-image { flex: 1 1 300px; text-align: center; }
+    .main-icon { font-size: 7rem; color: #4f46e5; opacity: 0.8; animation: float 6s infinite; }
+    /* exp card */
     .exp-creative-card {
-      background: white;
-      border-radius: 40px;
-      padding: 36px 40px;
-      box-shadow: 0 40px 50px -30px #4f46e5;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 30px;
-      margin: 40px 0 20px;
-      border: 2px dashed #cbd5e1;
-      position: relative;
-      overflow: hidden;
+      background: white; border-radius: 40px; padding: 30px; box-shadow: 0 30px 40px -25px #4f46e5;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin: 30px 0; border: 2px dashed #cbd5e1;
     }
-
-    .exp-creative-card::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      left: -30%;
-      width: 60%;
-      height: 200%;
-      background: linear-gradient(120deg, transparent, rgba(79, 70, 229, 0.03), transparent);
-      transform: rotate(25deg);
-      animation: gradientShift 8s infinite;
-    }
-
     .exp-icon-animated {
-      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
-      width: 90px;
-      height: 90px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: white;
-      box-shadow: 0 20px 25px -10px #4f46e5;
-      animation: float 5s infinite;
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6); width: 70px; height: 70px;
+      border-radius: 30px; display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; color: white; animation: float 5s infinite;
     }
-
-    .exp-detail h3 {
-      font-size: 2.2rem;
-      font-weight: 700;
-    }
-
-    .exp-detail p {
-      font-size: 1.2rem;
-      color: #334155;
-    }
-
+    .exp-detail h3 { font-size: 1.8rem; font-weight: 700; }
+    .exp-detail p { font-size: 1.1rem; color: #334155; }
+    /* skills */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 25px 0; }
     .skill-chip-modern {
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(8px);
-      border: 1.5px solid #e2e8f0;
-      border-radius: 60px;
-      padding: 16px 32px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 1.1rem;
-      transition: all 0.3s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      background: white; border: 1.5px solid #e2e8f0; border-radius: 60px; padding: 14px 24px;
+      font-weight: 600; display: inline-flex; align-items: center; gap: 10px; font-size: 1rem;
+      transition: 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
-
-    .skill-chip-modern:hover {
-      border-color: #4f46e5;
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 25px -15px #4f46e5;
-    }
-
+    .skill-chip-modern:hover { border-color: #4f46e5; transform: translateY(-3px); }
+    /* work grid */
+    .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 30px 0; }
     .work-card-creative {
-      background: white;
-      border-radius: 40px;
-      padding: 32px 28px;
-      transition: all 0.4s;
-      border: 1px solid #f0f4f9;
-      position: relative;
-      overflow: hidden;
+      background: white; border-radius: 30px; padding: 25px; transition: 0.3s;
+      border: 1px solid #f0f4f9; text-decoration: none; color: inherit; display: block;
     }
-
-    .work-card-creative::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, #4f46e5, #c084fc);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s;
-    }
-
-    .work-card-creative:hover::after {
-      transform: scaleX(1);
-    }
-
-    .work-card-creative:hover {
-      transform: scale(1.02) translateY(-6px);
-      box-shadow: 0 30px 35px -20px #4f46e580;
-    }
-
+    .work-card-creative:active { transform: scale(0.98); }
+    .work-icon { background: #ede9fe; width: 50px; height: 50px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #4f46e5; margin-bottom: 20px; }
+    .work-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .work-tags span { background: #f1f5f9; color: #334155; padding: 4px 12px; border-radius: 30px; font-size: 0.75rem; font-weight: 600; }
+    /* contact strip */
     .contact-strip-modern {
-      background: linear-gradient(105deg, #0b1b33 0%, #1e293b 100%);
-      border-radius: 70px;
-      padding: 60px 50px;
-      color: white;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 40px 45px -30px #0f172a;
-      border: 1px solid #334155;
+      background: linear-gradient(105deg, #0b1b33, #1e293b); border-radius: 50px;
+      padding: 40px 30px; color: white; display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 25px; margin: 40px 0;
     }
-
+    .contact-item { display: flex; align-items: center; gap: 10px; background: #1e293b; padding: 10px 20px; border-radius: 40px; flex-wrap: wrap; }
+    .badge { background: #ede9fe; padding: 6px 16px; border-radius: 40px; font-size: 0.85rem; font-weight: 600; color: #4f46e5; display: inline-block; }
     .btn-gradient {
-      background: linear-gradient(95deg, #4f46e5, #8b5cf6);
-      color: white;
-      border: none;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s;
-      background-size: 200% auto;
+      background: linear-gradient(95deg, #4f46e5, #8b5cf6); color: white; border: none;
+      padding: 12px 28px; border-radius: 50px; font-weight: 600; display: inline-block;
+      text-decoration: none; font-size: 0.95rem;
     }
-
-    .btn-gradient:hover {
-      background-position: right center;
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px -5px #4f46e5;
+    footer { padding: 30px 0; text-align: center; color: #64748b; }
+    /* sample gallery page styles (embedded for demo, but will open new page) */
+    .sample-page {
+      max-width: 1300px; margin: 0 auto; padding: 20px;
     }
-
-    footer {
-      padding: 40px 0 50px;
-      text-align: center;
-      color: #475569;
+    .sample-header { margin-bottom: 30px; }
+    .sample-header h1 { font-size: 2.5rem; }
+    .image-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px; margin-top: 30px;
     }
-
-    @media (max-width: 700px) {
-      .hero-content h1 { font-size: 3rem; }
-      .dynamic-title { white-space: normal; }
+    .image-grid img {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px;
+      cursor: pointer; border: 2px solid transparent; transition: 0.2s;
+    }
+    .image-grid img:hover { border-color: #4f46e5; transform: scale(1.02); }
+    /* modal for full screen */
+    .modal {
+      display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+      width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
+      align-items: center; justify-content: center;
+    }
+    .modal-content {
+      max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px;
+    }
+    .close {
+      position: absolute; top: 25px; right: 35px; color: white; font-size: 40px;
+      font-weight: bold; cursor: pointer; z-index: 1001;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- navigation with subtle fade -->
+    <!-- navigation -->
     <nav class="navbar slide-up">
-      <div class="logo">Akshay <span>Barala</span></div>
+      <div class="logo">Akshay <span style="background: linear-gradient(135deg,#4f46e5,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Barala</span></div>
       <div class="nav-links">
         <a href="#">Home</a>
         <a href="#work">Work</a>
@@ -463,70 +170,38 @@
       </div>
     </nav>
 
-    <!-- Hero with creative animations (capitalized name) -->
+    <!-- hero -->
     <div class="hero">
       <div class="hero-content">
-        <div class="floating-badge slide-up">
-          <i class="fas fa-crown" style="margin-right: 8px;"></i> Graphic Designer
-        </div>
-        <h1 class="slide-up">
-          <span class="first-name">Akshay</span> <span class="last-name-grad">Barala</span>
-        </h1>
-        <div class="dynamic-title slide-up">visual storyteller · photo editor</div>
-
-        <!-- experience detail card (updated with proper caps) -->
-        <div class="hero-detail-card slide-right stagger-child">
+        <div class="floating-badge"><i class="fas fa-crown" style="margin-right:6px;"></i> Graphic Designer</div>
+        <h1><span class="first-name">Akshay</span> <span class="last-name-grad">Barala</span></h1>
+        <div class="dynamic-title">visual storyteller · photo editor</div>
+        <div class="hero-detail-card stagger-child">
           <div class="detail-item"><i class="fas fa-gem"></i> <span><strong>Anirudh Jewels</strong> · 21k in-hand</span></div>
-          <div class="detail-item"><i class="fas fa-map-marker-alt"></i> <span>Jaipur, Rajasthan</span></div>
-          <div class="detail-item"><i class="fas fa-graduation-cap"></i> <span>BSc 2022 · Dip. GD 2024</span></div>
+          <div class="detail-item"><i class="fas fa-map-marker-alt"></i> <span>Jaipur</span></div>
+          <div class="detail-item"><i class="fas fa-graduation-cap"></i> <span>BSc 2022 · Dip.GD 2024</span></div>
         </div>
-
-        <p class="fade-scale" style="max-width: 500px; margin: 30px 0; color: #2d3a5e;">
-          <i class="fas fa-quote-left" style="color: #4f46e5; opacity: 0.5;"></i> 
-          crafting bold visuals for jewellery & lifestyle brands — 1.5+ years of creative experience.
-        </p>
-
-        <div class="hero-cta slide-up" style="display: flex; gap: 20px;">
-          <a href="#work" class="btn-gradient"><i class="fas fa-arrow-down"></i> explore work</a>
-          <a href="#contact" class="btn" style="background: white; color: #0b1b33; border: 2px solid #cbd5e1;"><i class="fas fa-comment"></i> let's talk</a>
-        </div>
+        <p style="margin:20px 0; color:#2d3a5e;"><i class="fas fa-quote-left" style="color:#4f46e5;"></i> crafting bold visuals for jewellery & lifestyle brands — 1.5+ years experience.</p>
+        <a href="#work" class="btn-gradient"><i class="fas fa-arrow-down"></i> explore work</a>
+        <a href="#contact" class="btn" style="background:white; color:#0b1b33; border:2px solid #cbd5e1; padding:12px 28px; border-radius:50px; text-decoration:none; margin-left:12px;">contact</a>
       </div>
-
-      <!-- creative right side with floating icons -->
-      <div class="hero-image fade-scale">
-        <div class="creative-shape">
-          <i class="fas fa-paint-brush main-icon"></i>
-          <div class="floating-elements">
-            <i class="fas fa-gem"></i>
-            <i class="fas fa-camera"></i>
-            <i class="fas fa-pen-fancy"></i>
-          </div>
-        </div>
-      </div>
+      <div class="hero-image"><i class="fas fa-paint-brush main-icon"></i></div>
     </div>
 
-    <!-- experience highlight card with updated timeline (Anirudh Jewels + internship) -->
-    <div class="exp-creative-card animate-glow">
+    <!-- experience card -->
+    <div class="exp-creative-card">
       <div class="exp-icon-animated"><i class="fas fa-ring"></i></div>
       <div class="exp-detail">
-        <h3>Present working in Anirudh Jewels <span style="font-size: 1rem; background: #e0e7ff; color: #4f46e5; padding: 4px 16px; border-radius: 40px; margin-left: 15px;">April 2025 – Present</span></h3>
+        <h3>Present working in Anirudh Jewels <span style="font-size:0.9rem; background:#e0e7ff; color:#4f46e5; padding:4px 12px; border-radius:40px;">April 2025 – Present</span></h3>
         <p><i class="fas fa-rupee-sign"></i> 21k in-hand · Photo editor & graphic designer</p>
-        <div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 16px;">
-          <span style="background: #f1f5f9; padding: 6px 20px; border-radius: 40px; font-size: 0.95rem;"><i class="fas fa-briefcase" style="color:#4f46e5;"></i> Internship: Third Eye · Dec 2024 – Mar 2025</span>
-        </div>
-      </div>
-      <div style="margin-left: auto; display: flex; gap: 12px;">
-        <span class="badge"><i class="far fa-clock"></i> 25+ projects</span>
-        <span class="badge"><i class="fas fa-award"></i> jewellery specialist</span>
+        <div style="margin-top:10px;"><span style="background:#f1f5f9; padding:6px 16px; border-radius:40px; font-size:0.9rem;"><i class="fas fa-briefcase" style="color:#4f46e5;"></i> Internship: Third Eye · Dec 2024 – Mar 2025</span></div>
       </div>
     </div>
 
-    <!-- skills section with soft skills and Figma -->
+    <!-- skills -->
     <section id="skills">
-      <div class="title-accent" style="width: 80px; height: 6px; background: linear-gradient(90deg, #4f46e5, #c084fc);"></div>
-      <h2 class="section-title" style="font-size: 2.6rem;">creative toolkit <span style="font-size: 1.2rem;">+ human skills</span></h2>
-
-      <!-- software chips -->
+      <div style="width:60px; height:5px; background:linear-gradient(90deg,#4f46e5,#c084fc); margin-bottom:15px;"></div>
+      <h2 style="font-size:2.2rem; font-weight:700;">creative toolkit</h2>
       <div class="skills-grid stagger-child">
         <div class="skill-chip-modern"><i class="fab fa-adobe"></i> Photoshop</div>
         <div class="skill-chip-modern"><i class="fas fa-image"></i> Lightroom</div>
@@ -536,88 +211,160 @@
         <div class="skill-chip-modern"><i class="fab fa-figma"></i> Figma</div>
         <div class="skill-chip-modern"><i class="fas fa-pen-nib"></i> InDesign</div>
       </div>
-
-      <!-- soft skills -->
-      <div style="margin-top: 60px;">
-        <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 30px;"><i class="fas fa-heart" style="color: #4f46e5;"></i> beyond software</h3>
-        <div class="skills-grid stagger-child">
+      <div style="margin-top:40px;">
+        <h3 style="font-size:1.8rem;"><i class="fas fa-heart" style="color:#4f46e5;"></i> beyond software</h3>
+        <div class="skills-grid">
           <div class="skill-chip-modern"><i class="fas fa-comments"></i> communication</div>
           <div class="skill-chip-modern"><i class="fas fa-users"></i> team collaboration</div>
           <div class="skill-chip-modern"><i class="fas fa-lightbulb"></i> creative concept</div>
           <div class="skill-chip-modern"><i class="fas fa-clock"></i> deadline oriented</div>
-          <div class="skill-chip-modern"><i class="fas fa-magic"></i> attention to detail</div>
         </div>
       </div>
     </section>
 
-    <!-- work / projects section -->
+    <!-- work section with clickable card that opens sample page -->
     <section id="work">
-      <div class="title-accent" style="width: 80px; height: 6px; background: linear-gradient(90deg, #4f46e5, #c084fc);"></div>
-      <h2 class="section-title" style="font-size: 2.6rem;">recent <span style="color: #4f46e5;">creations</span></h2>
-      <div class="work-grid stagger-child">
-        <div class="work-card-creative">
-          <div class="work-icon" style="background: #ede9fe;"><i class="fas fa-gem" style="color: #4f46e5;"></i></div>
+      <div style="width:60px; height:5px; background:linear-gradient(90deg,#4f46e5,#c084fc); margin-bottom:15px;"></div>
+      <h2 style="font-size:2.2rem;">recent <span style="color:#4f46e5;">creations</span></h2>
+      <div class="work-grid">
+        <!-- jewellery catalog card - opens sample page -->
+        <a href="#" onclick="openSamplePage(event)" class="work-card-creative" id="jewelCatalogLink">
+          <div class="work-icon"><i class="fas fa-gem" style="color:#4f46e5;"></i></div>
           <h4>jewellery catalog</h4>
-          <p>retouching & layout for Anirudh (photoshop + lightroom)</p>
+          <p>retouching & layout for Anirudh Jewels (photoshop + lightroom)</p>
           <div class="work-tags"><span>photoshop</span><span>lightroom</span></div>
-        </div>
-        <div class="work-card-creative">
-          <div class="work-icon" style="background: #ede9fe;"><i class="fas fa-crown"></i></div>
-          <h4>brand identity</h4>
-          <p>logo, packaging & guidelines (illustrator + figma)</p>
-          <div class="work-tags"><span>illustrator</span><span>figma</span></div>
-        </div>
-        <div class="work-card-creative">
-          <div class="work-icon" style="background: #ede9fe;"><i class="fas fa-video"></i></div>
-          <h4>instagram edits</h4>
-          <p>short videos & reels (capcut + photoshop)</p>
-          <div class="work-tags"><span>capcut</span><span>photoshop</span></div>
-        </div>
-        <div class="work-card-creative">
-          <div class="work-icon" style="background: #ede9fe;"><i class="fas fa-pen-nib"></i></div>
-          <h4>vector illustrations</h4>
-          <p>corel draw + adobe for print & social assets</p>
-          <div class="work-tags"><span>corel</span><span>illustrator</span></div>
-        </div>
+        </a>
+        <div class="work-card-creative"><div class="work-icon"><i class="fas fa-crown"></i></div><h4>brand identity</h4><p>logo, packaging & guidelines (illustrator + figma)</p><div class="work-tags"><span>illustrator</span><span>figma</span></div></div>
+        <div class="work-card-creative"><div class="work-icon"><i class="fas fa-video"></i></div><h4>instagram edits</h4><p>short videos & reels (capcut + photoshop)</p><div class="work-tags"><span>capcut</span><span>photoshop</span></div></div>
+        <div class="work-card-creative"><div class="work-icon"><i class="fas fa-pen-nib"></i></div><h4>vector illustrations</h4><p>corel draw + adobe for print assets</p><div class="work-tags"><span>corel</span><span>illustrator</span></div></div>
       </div>
     </section>
 
-    <!-- contact with correct email, phone and education details -->
+    <!-- contact -->
     <section id="contact">
       <div class="contact-strip-modern">
-        <div>
-          <h2 style="font-size: 2.4rem; font-weight: 700;"><i class="fas fa-map-pin" style="color: #a78bfa;"></i> Jaipur, India</h2>
-          <p style="color: #b9c7da; font-size: 1.2rem;">open for freelance · remote / on-site</p>
-        </div>
-        <div class="contact-info" style="gap: 20px; flex-wrap: wrap;">
-          <div class="contact-item" style="background: #1e293b;"><i class="fas fa-envelope"></i> <span>akshaybarala4082@gmail.com</span></div>
-          <div class="contact-item" style="background: #1e293b;"><i class="fas fa-phone-alt"></i> <span>+91 9352798194</span></div>
+        <div><h2 style="font-size:2rem;"><i class="fas fa-map-pin" style="color:#a78bfa;"></i> Jaipur</h2><p style="color:#b9c7da;">open for freelance</p></div>
+        <div style="display:flex; flex-wrap:wrap; gap:15px;">
+          <div class="contact-item"><i class="fas fa-envelope"></i> <span>akshaybarala4082@gmail.com</span></div>
+          <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>+91 9352798194</span></div>
         </div>
       </div>
-      
-      <!-- education details as requested -->
-      <div style="display: flex; gap: 20px; justify-content: center; margin: 40px 0 20px; flex-wrap: wrap;">
-        <span class="badge" style="background: #ede9fe; padding: 8px 22px;"><i class="fas fa-school"></i> Senior Secondary - 2019</span>
-        <span class="badge" style="background: #ede9fe; padding: 8px 22px;"><i class="fas fa-graduation-cap"></i> BSc - 2022</span>
-        <span class="badge" style="background: #ede9fe; padding: 8px 22px;"><i class="fas fa-diploma"></i> Diploma in Graphic Design - 2024</span>
-      </div>
-      
-      <!-- timeline badges extra -->
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
-        <span class="badge"><i class="fas fa-calendar-alt"></i> Apr 2025 – Present · Anirudh Jewels (21k)</span>
-        <span class="badge"><i class="fas fa-history"></i> Dec 2024 – Mar 2025 · Third Eye Internship</span>
+      <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin:30px 0;">
+        <span class="badge"><i class="fas fa-school"></i> Senior Secondary - 2019</span>
+        <span class="badge"><i class="fas fa-graduation-cap"></i> BSc - 2022</span>
+        <span class="badge"><i class="fas fa-diploma"></i> Diploma GD - 2024</span>
       </div>
     </section>
 
-    <!-- footer -->
-    <footer>
-      <p>© 2025 Akshay Barala — graphic designer at Anirudh Jewels · all rights reserved</p>
-      <p style="margin-top: 16px; font-size: 1.2rem;">
-        <i class="fab fa-instagram" style="margin: 0 12px; color: #4f46e5;"></i>
-        <i class="fab fa-behance" style="margin: 0 12px; color: #4f46e5;"></i>
-        <i class="fab fa-linkedin-in" style="margin: 0 12px; color: #4f46e5;"></i>
-      </p>
-    </footer>
+    <footer>© 2025 Akshay Barala — Anirudh Jewels</footer>
   </div>
+
+  <!-- Modal for full-screen images (hidden by default) -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <!-- Sample page content (hidden by default, shown when clicking the catalog) -->
+  <div id="samplePageContainer" style="display: none;">
+    <div class="sample-page">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:20px;">
+        <h1 style="font-size:2.2rem;">Sample 1 Raw Images</h1>
+        <a href="#" onclick="closeSamplePage(event)" style="background:#4f46e5; color:white; padding:10px 25px; border-radius:50px; text-decoration:none;">← Back to portfolio</a>
+      </div>
+      <p style="margin-bottom:20px; color:#334155;">GitHub images · click any for full screen</p>
+      <div class="image-grid" id="githubImageGrid"></div>
+    </div>
+  </div>
+
+  <script>
+    // List of all image filenames from IMG_9476.JPG to IMG_9779.JPG (approx)
+    function generateImageList() {
+      let images = [];
+      // we have from 9476 to 9779 (304 images) but let's generate up to 9779
+      for (let i = 9476; i <= 9779; i++) {
+        images.push(`IMG_${i}.JPG`);
+      }
+      return images;
+    }
+
+    const imageFilenames = generateImageList();
+    const baseUrl = 'https://raw.githubusercontent.com/AKSHAY-BARALA/PORTFOLIO-GRAPHIC-DESIGNER/main/Sample%201/';
+
+    // Preload grid into sample container
+    function renderImageGrid() {
+      const grid = document.getElementById('githubImageGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      imageFilenames.forEach(filename => {
+        const imgUrl = baseUrl + filename;
+        const imgWrapper = document.createElement('img');
+        imgWrapper.src = imgUrl;
+        imgWrapper.alt = filename;
+        imgWrapper.loading = 'lazy';
+        imgWrapper.onerror = () => { imgWrapper.style.display = 'none'; }; // hide broken
+        imgWrapper.onclick = (e) => {
+          e.stopPropagation();
+          openFullscreen(imgUrl);
+        };
+        grid.appendChild(imgWrapper);
+      });
+    }
+
+    // Fullscreen modal
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+
+    function openFullscreen(imgSrc) {
+      modal.style.display = 'flex';
+      modalImg.src = imgSrc;
+    }
+
+    window.closeModal = function() {
+      modal.style.display = 'none';
+    };
+
+    // Close modal when clicking outside image
+    modal.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+
+    // Open sample page (replaces main content with sample page)
+    function openSamplePage(event) {
+      event.preventDefault();
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('samplePageContainer').style.display = 'block';
+      renderImageGrid(); // ensure grid is rendered
+    }
+
+    // Close sample page and show main portfolio
+    window.closeSamplePage = function(event) {
+      if (event) event.preventDefault();
+      document.getElementById('samplePageContainer').style.display = 'none';
+      document.querySelector('.container').style.display = 'block';
+    };
+
+    // Also handle direct link to catalog (for mobile)
+    document.getElementById('jewelCatalogLink').addEventListener('click', openSamplePage);
+
+    // Make sure modal is accessible
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+  <!-- Also add a simple fallback for modal close -->
+  <style>
+    .modal { display: none; }
+    #samplePageContainer { display: none; }
+    @media (max-width:480px) {
+      .hero-detail-card .detail-item i { font-size: 1.2rem; padding: 6px; }
+      .work-card-creative { padding: 20px; }
+    }
+  </style>
 </body>
 </html>
