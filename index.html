@@ -52,8 +52,10 @@
       .exp-creative-card { padding: 24px !important; }
       .skill-chip-modern { padding: 12px 20px !important; font-size: 0.95rem !important; }
       .contact-strip-modern { padding: 40px 25px !important; }
+      .nav-links { gap: 12px !important; }
+      .nav-links a { font-size: 0.9rem !important; padding: 6px 10px !important; }
     }
-    /* animations - ENHANCED FOR CREATIVE EFFECT */
+    /* animations */
     @keyframes float {
       0% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-12px) rotate(1deg); }
@@ -73,11 +75,13 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    @keyframes navPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
     .slide-up { animation: slideUp 0.6s ease forwards; }
     .stagger-child > * { opacity: 0; animation: slideUp 0.5s ease forwards; }
-    .stagger-child > *:nth-child(1) { animation-delay: 0.1s; }
-    .stagger-child > *:nth-child(2) { animation-delay: 0.2s; }
-    .stagger-child > *:nth-child(3) { animation-delay: 0.3s; }
     
     /* Creative name animation */
     .creative-name {
@@ -101,7 +105,7 @@
       animation: gradientShift 6s ease infinite, glowPulse 3s ease-in-out infinite;
       display: inline-block;
     }
-    /* navbar */
+    /* navbar - WITH ENHANCED BUTTON ANIMATIONS */
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
       padding: 20px 0; border-bottom: 1px solid rgba(100,116,139,0.15);
@@ -114,8 +118,45 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       animation: gradientShift 8s ease infinite;
     }
-    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; font-weight: 600; color: #1e293b; }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 700; /* BOLD */
+      color: #1e293b;
+      padding: 8px 16px;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, transparent 0%, transparent 100%);
+      background-size: 200% 100%;
+    }
+    .nav-links a:hover {
+      color: #4f46e5;
+      background: rgba(79, 70, 229, 0.1);
+      transform: translateY(-3px);
+      animation: navPulse 0.6s ease;
+      box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
+    }
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    .nav-links a:hover::before {
+      width: 70%;
+    }
     /* hero */
     .hero { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; padding: 40px 0; }
     .hero-content { flex: 1 1 400px; }
@@ -188,6 +229,63 @@
     }
     .work-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
     .work-tags span { background: #f1f5f9; color: #334155; padding: 4px 12px; border-radius: 30px; font-size: 0.75rem; font-weight: 600; }
+    /* about me section - NEW */
+    .about-section {
+      background: white;
+      border-radius: 40px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 20px 30px -15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .about-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+    .about-text {
+      flex: 2;
+      min-width: 300px;
+    }
+    .about-text p {
+      margin-bottom: 15px;
+      color: #334155;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .about-highlights {
+      flex: 1;
+      min-width: 250px;
+      background: #f8fafc;
+      padding: 25px;
+      border-radius: 30px;
+      border: 1px solid #e2e8f0;
+    }
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .highlight-item i {
+      font-size: 1.5rem;
+      color: #4f46e5;
+      width: 30px;
+    }
+    .highlight-item span {
+      font-weight: 500;
+      color: #0b1b33;
+    }
     /* contact strip */
     .contact-strip-modern {
       background: linear-gradient(105deg, #0b1b33, #1e293b); border-radius: 50px;
@@ -206,12 +304,12 @@
     .btn-gradient:hover { background-position: right center; transform: scale(1.05); }
     footer { padding: 30px 0; text-align: center; color: #64748b; }
     /* sample gallery page styles */
-    .sample-page, .videos-page, .posters-page {
+    .sample-page, .videos-page, .posters-page, .about-page {
       max-width: 1300px;
       margin: 0 auto;
       padding: 20px;
     }
-    .sample-header, .videos-header, .posters-header { 
+    .sample-header, .videos-header, .posters-header, .about-header { 
       margin-bottom: 30px; 
       display: flex; 
       justify-content: space-between; 
@@ -219,7 +317,7 @@
       flex-wrap: wrap;
       padding-top: 10px;
     }
-    .sample-header h1, .videos-header h1, .posters-header h1 { font-size: 2.2rem; }
+    .sample-header h1, .videos-header h1, .posters-header h1, .about-header h1 { font-size: 2.2rem; }
     .category-section { margin-bottom: 40px; }
     .category-title { 
       font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; 
@@ -322,18 +420,19 @@
 </head>
 <body>
   <div class="container">
-    <!-- navigation -->
+    <!-- navigation with 5 buttons - BOLD & ANIMATED -->
     <nav class="navbar slide-up">
       <div class="logo">Akshay <span>Barala</span></div>
       <div class="nav-links">
         <a href="#">Home</a>
         <a href="#work">Work</a>
         <a href="#skills">Skills</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
 
-    <!-- hero with creative animated name -->
+    <!-- hero -->
     <div class="hero">
       <div class="hero-content">
         <div class="floating-badge"><i class="fas fa-crown" style="margin-right:6px;"></i> Graphic Designer</div>
@@ -363,7 +462,7 @@
       </div>
     </div>
 
-    <!-- skills -->
+    <!-- skills - UPDATED: Canva instead of InDesign -->
     <section id="skills">
       <div style="width:60px; height:5px; background:linear-gradient(90deg,#4f46e5,#c084fc); margin-bottom:15px;"></div>
       <h2 style="font-size:2.2rem; font-weight:700;">Creative Toolkit</h2>
@@ -374,7 +473,7 @@
         <div class="skill-chip-modern"><i class="fas fa-paint-brush"></i> CorelDRAW</div>
         <div class="skill-chip-modern"><i class="fas fa-video"></i> CapCut</div>
         <div class="skill-chip-modern"><i class="fab fa-figma"></i> Figma</div>
-        <div class="skill-chip-modern"><i class="fas fa-pen-nib"></i> InDesign</div>
+        <div class="skill-chip-modern"><i class="fas fa-paint-brush"></i> Canva</div>
       </div>
       <div style="margin-top:40px;">
         <h3 style="font-size:1.8rem;"><i class="fas fa-heart" style="color:#4f46e5;"></i> Beyond Software</h3>
@@ -387,12 +486,54 @@
       </div>
     </section>
 
-    <!-- work section with clickable cards - UPDATED WITH CAPITALIZED HEADINGS AND NEW DESCRIPTIONS -->
+    <!-- ABOUT ME SECTION - NEW -->
+    <section id="about">
+      <div style="width:60px; height:5px; background:linear-gradient(90deg,#4f46e5,#c084fc); margin-bottom:15px;"></div>
+      <h2 style="font-size:2.2rem; font-weight:700;">About Me</h2>
+      
+      <div class="about-section">
+        <div class="about-content">
+          <div class="about-text">
+            <p>Hey, I'm <strong>Akshay Barala</strong>, a Jaipur-based graphic designer with 1.5+ years of professional experience. I specialize in <strong>jewellery retouching, brand identity, and social media content</strong> that helps businesses stand out.</p>
+            
+            <p>Currently working as a Photo Editor & Graphic Designer at <strong>Anirudh Jewels</strong>, I handle everything from product retouching to catalog design and social media visuals. My design philosophy is simple: create bold, clean, and effective visuals that tell a story.</p>
+            
+            <p>I completed my <strong>BSc in 2022</strong> and followed it with a <strong>Diploma in Graphic Design (2024)</strong> to sharpen my skills. I've also completed an internship at <strong>Third Eye</strong>, where I gained hands-on experience in creative campaigns.</p>
+            
+            <p>When I'm not designing, you'll find me exploring new design trends, learning new tools, or working on personal creative projects.</p>
+          </div>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-calendar-check"></i>
+              <span>1.5+ Years Experience</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-gem"></i>
+              <span>Jewellery Specialist</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-project-diagram"></i>
+              <span>30+ Projects Completed</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Jaipur, Rajasthan</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-clock"></i>
+              <span>Available for Full Time & Freelance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- work section -->
     <section id="work">
       <div style="width:60px; height:5px; background:linear-gradient(90deg,#4f46e5,#c084fc); margin-bottom:15px;"></div>
       <h2 style="font-size:2.2rem;">Recent <span style="color:#4f46e5;">Creations</span></h2>
       <div class="work-grid">
-        <!-- Jewellery Catalog card - UPDATED DESCRIPTION -->
+        <!-- Jewellery Edits card -->
         <a href="#" onclick="openSamplePage(event)" class="work-card-creative" id="jewelCatalogLink">
           <div class="work-icon"><i class="fas fa-gem" style="color:#4f46e5;"></i></div>
           <h4>Jewellery Edits</h4>
@@ -400,7 +541,7 @@
           <div class="work-tags"><span>Photoshop</span><span>Lightroom</span></div>
         </a>
         
-        <!-- Brand Identity card - NOW WITH BEHANCE LINK -->
+        <!-- Brand Identity card -->
         <a href="https://www.behance.net/gallery/236449205/Full-Branding-Package" target="_blank" class="work-card-creative" id="brandIdentityLink">
           <div class="work-icon"><i class="fas fa-crown"></i></div>
           <h4>Brand Identity</h4>
@@ -426,10 +567,10 @@
       </div>
     </section>
 
-    <!-- contact -->
+    <!-- contact - UPDATED TEXT -->
     <section id="contact">
       <div class="contact-strip-modern">
-        <div><h2 style="font-size:2rem;"><i class="fas fa-map-pin" style="color:#a78bfa;"></i> Jaipur</h2><p style="color:#b9c7da;">Open For Freelance</p></div>
+        <div><h2 style="font-size:2rem;"><i class="fas fa-map-pin" style="color:#a78bfa;"></i> Jaipur</h2><p style="color:#b9c7da;">Open For Full Time & Freelance</p></div>
         <div style="display:flex; flex-wrap:wrap; gap:15px;">
           <div class="contact-item"><i class="fas fa-envelope"></i> <span>akshaybarala4082@gmail.com</span></div>
           <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>+91 9352798194</span></div>
@@ -482,7 +623,7 @@
     </div>
   </div>
 
-  <!-- Videos Page - with 4 reels -->
+  <!-- Videos Page -->
   <div id="videosPageContainer" style="display: none;">
     <div class="videos-page">
       <div class="videos-header">
