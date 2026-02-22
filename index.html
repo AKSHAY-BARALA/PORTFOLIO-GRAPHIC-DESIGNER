@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akshay Barala · graphic designer</title>
+  <!-- Google Fonts: clean & professional -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) for subtle icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8fafc;
+      font-family: 'Inter', sans-serif;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    .logo span {
+      color: #4f46e5;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #334155;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #4f46e5;
+    }
+
+    /* buttons / tags */
+    .badge {
+      display: inline-block;
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #0f172a;
+      color: white;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn i {
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #4f46e5;
+    }
+
+    /* hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 0 40px;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .hero-content .greet {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4f46e5;
+      margin-bottom: 16px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .hero-content h1 .last-name {
+      color: #4f46e5;
+      border-bottom: 4px solid #e0e7ff;
+    }
+
+    .hero-content .title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 24px;
+    }
+
+    .hero-highlight {
+      background: #eef2ff;
+      padding: 16px 20px;
+      border-radius: 24px;
+      display: inline-block;
+      margin: 24px 0 20px;
+    }
+
+    .hero-highlight p {
+      font-weight: 600;
+      color: #1e1b4b;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-highlight i {
+      color: #4f46e5;
+      font-size: 1.4rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .hero-image {
+      flex: 1 1 320px;
+      background: linear-gradient(145deg, #e2e8f0, #f1f5f9);
+      border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+      padding: 20px;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+    }
+
+    .visual-placeholder {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1e293b;
+    }
+
+    .visual-placeholder i {
+      font-size: 4rem;
+      color: #4f46e5;
+      margin-bottom: 16px;
+    }
+
+    .visual-placeholder p {
+      background: rgba(255,255,255,0.6);
+      padding: 8px 16px;
+      border-radius: 40px;
+    }
+
+    /* section general */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .section-title small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #64748b;
+      margin-left: 16px;
+    }
+
+    .title-accent {
+      display: inline-block;
+      width: 60px;
+      height: 4px;
+      background: #4f46e5;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    /* experience card */
+    .exp-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px 36px;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.05);
+      border: 1px solid #e9eef3;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .exp-icon {
+      background: #eef2ff;
+      width: 80px;
+      height: 80px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #4f46e5;
+    }
+
+    .exp-detail h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .exp-detail p {
+      color: #475569;
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+
+    /* software skill chips */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 30px 0 20px;
+    }
+
+    .skill-chip {
+      background: white;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 60px;
+      padding: 12px 30px;
+      font-weight: 600;
+      color: #1e293b;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      transition: all 0.2s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+
+    .skill-chip i {
+      color: #4f46e5;
+      font-size: 1.3rem;
+      width: 24px;
+    }
+
+    .skill-chip:hover {
+      border-color: #4f46e5;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px -15px #4f46e5;
+    }
+
+    /* work grid / minimal portfolio */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .work-item {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+      border: 1px solid #f0f4f9;
+    }
+
+    .work-item:hover {
+      transform: scale(1.01);
+      border-color: #cbd5e1;
+    }
+
+    .work-icon {
+      background: #e0e7ff;
+      width: 56px;
+      height: 56px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #4f46e5;
+      margin-bottom: 24px;
+    }
+
+    .work-item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 12px;
+    }
+
+    .work-tags span {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* contact strip */
+    .contact-strip {
+      background: #0f172a;
+      border-radius: 48px;
+      padding: 50px 40px;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .contact-strip h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .contact-strip p {
+      color: #b9c7da;
+      font-size: 1.1rem;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1e293b;
+      padding: 12px 24px;
+      border-radius: 40px;
+    }
+
+    .contact-item i {
+      font-size: 1.3rem;
+      color: #4f46e5;
+    }
+
+    .contact-item span {
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0 50px;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 20px;
+    }
+
+    /* responsive touches */
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .contact-strip {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+      .exp-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- navigation -->
+    <nav class="navbar">
+      <div class="logo">akshay <span>barala</span></div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- hero section (name, role, experience) -->
+    <div class="hero">
+      <div class="hero-content">
+        <span class="greet"><i class="fas fa-pen-fancy" style="margin-right: 6px;"></i> graphic designer</span>
+        <h1>
+          akshay <span class="last-name">barala</span>
+        </h1>
+        <div class="title">visual · photo · motion · jaipur</div>
+        <div class="hero-highlight">
+          <p><i class="fas fa-briefcase"></i> 1.5+ years · present at Anirush Jewels</p>
+        </div>
+        <p style="color: #334155; max-width: 500px; margin-bottom: 20px;">
+          <i class="fas fa-map-marker-alt" style="color: #4f46e5; margin-right: 6px;"></i> jaipur, rajasthan — open to freelance & collab.
+        </p>
+        <!-- additional detail: BSc 2022, current salary inline (professional subtle) -->
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
+          <span class="badge"><i class="fas fa-graduation-cap"></i> BSc 2022</span>
+          <span class="badge"><i class="fas fa-rupee-sign"></i> current 22k in-hand</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#work" class="btn"><i class="fas fa-arrow-down"></i> see work</a>
+          <a href="#contact" class="btn" style="background: white; color: #0f172a; border: 2px solid #e2e8f0;"><i class="fas fa-comment"></i> contact</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="visual-placeholder">
+          <i class="fas fa-gem"></i> <!-- subtle jewelry hint -->
+          <p>akshay barala</p>
+          <span style="font-size: 0.9rem; color: #475569;">Anirush Jewels • designer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- experience & current role card (with salary mention) -->
+    <div class="exp-card">
+      <div class="exp-icon"><i class="fas fa-ring"></i></div> <!-- jewelry related icon -->
+      <div class="exp-detail">
+        <h3>present at Anirush Jewels</h3>
+        <p>photo editor & graphic designer · 22k in-hand · since 1.5+ yrs</p>
+        <div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 16px;">
+          <span style="font-size: 0.95rem; background: #f1f5f9; padding: 4px 16px; border-radius: 30px;"><i class="fas fa-calendar-alt" style="color:#4f46e5;"></i> BSc 2022 graduate</span>
+          <span style="font-size: 0.95rem; background: #f1f5f9; padding: 4px 16px; border-radius: 30px;"><i class="fas fa-map-pin" style="color:#4f46e5;"></i> jaipur, rajasthan</span>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 12px;">
+        <span class="badge"><i class="far fa-clock"></i> 20+ projects</span>
+        <span class="badge"><i class="fas fa-award"></i> jewellery specialst</span>
+      </div>
+    </div>
+
+    <!-- software skills & soft skills (updated: removed AE/PR, added Figma + communication) -->
+    <section id="skills">
+      <div class="title-accent"></div>
+      <h2 class="section-title">software & professional skills <small>· adobe + figma + core competencies</small></h2>
+      
+      <!-- software skills as requested: Photoshop, Lightroom, Illustrator, Corel, CapCut, Figma (and extra) -->
+      <div class="skills-grid">
+        <div class="skill-chip"><i class="fab fa-adobe"></i> Photoshop</div>
+        <div class="skill-chip"><i class="fas fa-image"></i> Lightroom</div>
+        <div class="skill-chip"><i class="fab fa-adobe"></i> Illustrator</div>
+        <div class="skill-chip"><i class="fas fa-paint-brush"></i> CorelDRAW</div>
+        <div class="skill-chip"><i class="fas fa-video"></i> CapCut</div>
+        <div class="skill-chip"><i class="fab fa-figma"></i> Figma</div>
+        <!-- additional design tool to round out: XD or InDesign, but keep it clean -->
+        <div class="skill-chip"><i class="fas fa-pen-fancy"></i> InDesign</div>
+      </div>
+
+      <!-- soft skills (communication, etc) as requested -->
+      <div style="margin-top: 40px;">
+        <h3 style="font-size: 1.6rem; font-weight: 600; margin-bottom: 16px;">beyond software</h3>
+        <div class="skills-grid" style="margin-top: 10px;">
+          <div class="skill-chip"><i class="fas fa-comments"></i> communication</div>
+          <div class="skill-chip"><i class="fas fa-users"></i> team collaboration</div>
+          <div class="skill-chip"><i class="fas fa-lightbulb"></i> creative concept</div>
+          <div class="skill-chip"><i class="fas fa-clock"></i> deadline oriented</div>
+          <div class="skill-chip"><i class="fas fa-magic"></i> attention to detail</div>
+        </div>
+      </div>
+
+      <p style="color: #475569; margin-top: 28px;"><i class="fas fa-circle-check" style="color: #4f46e5;"></i> daily driver: adobe creative cloud & figma · bsc graduate 2022</p>
+    </section>
+
+    <!-- work / projects (minimal showcase) -->
+    <section id="work">
+      <div class="title-accent"></div>
+      <h2 class="section-title">recent creations <small>· jewellery & lifestyle focus</small></h2>
+      <div class="work-grid">
+        <div class="work-item">
+          <div class="work-icon"><i class="fas fa-gem"></i></div>
+          <h4>jewellery catalog</h4>
+          <p style="color: #475569;">product retouching & catalog layout for Anirush</p>
+          <div class="work-tags"><span>photoshop</span><span>lightroom</span></div>
+        </div>
+        <div class="work-item">
+          <div class="work-icon"><i class="fas fa-crown"></i></div>
+          <h4>brand identity</h4>
+          <p style="color: #475569;">logo, packaging and visual guidelines (illustrator + figma)</p>
+          <div class="work-tags"><span>illustrator</span><span>figma</span></div>
+        </div>
+        <div class="work-item">
+          <div class="work-icon"><i class="fas fa-video"></i></div>
+          <h4>instagram edits</h4>
+          <p style="color: #475569;">short video & motion for jewellery reels (capcut)</p>
+          <div class="work-tags"><span>capcut</span><span>photoshop</span></div>
+        </div>
+        <div class="work-item">
+          <div class="work-icon"><i class="fas fa-pen-nib"></i></div>
+          <h4>vector illustrations</h4>
+          <p style="color: #475569;">corel draw & adobe illustrator for print assets</p>
+          <div class="work-tags"><span>corel</span><span>illustrator</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact / let's work together (Jaipur specific) -->
+    <section id="contact">
+      <div class="contact-strip">
+        <div>
+          <h2>based in jaipur, rajasthan</h2>
+          <p><i class="fas fa-globe" style="margin-right: 8px; color: #4f46e5;"></i> available for freelance · remote or on-site</p>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item"><i class="fas fa-envelope"></i> <span>akshay.b@anirush.design</span></div>
+          <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>+91 98290 11223</span></div>
+          <div class="contact-item"><i class="fab fa-behance"></i> <span>/akshaybarala</span></div>
+        </div>
+      </div>
+      <!-- extra info: education & salary highlights (already in hero) but reinforce -->
+      <div style="display: flex; gap: 20px; justify-content: center; margin: 36px 0 10px; flex-wrap: wrap;">
+        <span style="font-weight: 500;"><i class="fas fa-check-circle" style="color: #4f46e5;"></i> BSc 2022 graduate</span>
+        <span style="font-weight: 500;"><i class="fas fa-clock" style="color: #4f46e5;"></i> 1.5 years exp · current 22k in-hand</span>
+        <span style="font-weight: 500;"><i class="fas fa-map-marker-alt" style="color: #4f46e5;"></i> jaipur, rajasthan</span>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <p>© 2025 akshay barala — graphic designer (present at Anirush Jewels). all rights reserved.</p>
+      <p style="margin-top: 12px; font-size: 0.9rem;">
+        <i class="fab fa-instagram" style="margin: 0 8px;"></i>
+        <i class="fab fa-behance" style="margin: 0 8px;"></i>
+        <i class="fab fa-linkedin-in" style="margin: 0 8px;"></i>
+      </p>
+    </footer>
+  </div>
+  <!-- single index.html, professional and fully updated -->
+</body>
+</html>
