@@ -236,7 +236,7 @@
       border-radius: 30px; 
       padding: 28px 25px; 
       transition: all 0.3s ease;
-      border: 2px solid #e9eef3; /* BOLDER BORDER */
+      border: 2px solid #e9eef3;
       text-decoration: none; 
       color: inherit; 
       display: block;
@@ -244,7 +244,7 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.15);
-      font-weight: 600; /* BOLDER TEXT */
+      font-weight: 600;
       animation: cardPulse 3s infinite ease-in-out;
     }
     .work-card-creative::after {
@@ -270,7 +270,7 @@
     
     .work-card-creative h4 {
       font-size: 1.5rem;
-      font-weight: 700; /* BOLDER HEADING */
+      font-weight: 700;
       margin-bottom: 12px;
       color: #0b1b33;
       position: relative;
@@ -542,7 +542,7 @@
         </h1>
         <div class="dynamic-title">Visual Storyteller · Photo Editor</div>
         <div class="hero-detail-card stagger-child">
-          <div class="detail-item"><i class="fas fa-gem"></i> <span><strong>Anirudh Jewels</strong> · 21k in-hand</span></div>
+          <div class="detail-item"><i class="fas fa-gem"></i> <span><strong>Anirudh Jewels</strong></span></div>
           <div class="detail-item"><i class="fas fa-map-marker-alt"></i> <span>Jaipur</span></div>
           <div class="detail-item"><i class="fas fa-graduation-cap"></i> <span>BSc 2022 · Dip.GD 2024</span></div>
         </div>
@@ -553,12 +553,12 @@
       <div class="hero-image"><i class="fas fa-paint-brush main-icon"></i></div>
     </div>
 
-    <!-- experience card -->
+    <!-- experience card - salary removed -->
     <div class="exp-creative-card">
       <div class="exp-icon-animated"><i class="fas fa-ring"></i></div>
       <div class="exp-detail">
         <h3>Present Working in Anirudh Jewels <span style="font-size:0.9rem; background:#e0e7ff; color:#4f46e5; padding:4px 12px; border-radius:40px;">April 2025 – Present</span></h3>
-        <p><i class="fas fa-rupee-sign"></i> 21k in-hand · Photo Editor & Graphic Designer</p>
+        <p>Photo Editor & Graphic Designer</p>
         <div style="margin-top:10px;"><span style="background:#f1f5f9; padding:6px 16px; border-radius:40px; font-size:0.9rem;"><i class="fas fa-briefcase" style="color:#4f46e5;"></i> Internship: Third Eye · Dec 2024 – Mar 2025</span></div>
       </div>
     </div>
@@ -629,7 +629,7 @@
       </div>
     </section>
 
-    <!-- work section - REORDERED: 1. Jewellery, 2. Social Media, 3. Instagram, 4. Brand Identity -->
+    <!-- work section - REORDERED -->
     <section id="work">
       <div style="width:60px; height:5px; background:linear-gradient(90deg,#4f46e5,#c084fc); margin-bottom:15px;"></div>
       <h2 style="font-size:2.2rem;">Recent <span style="color:#4f46e5;">Creations</span></h2>
@@ -642,7 +642,7 @@
           <div class="work-tags"><span>Photoshop</span><span>Lightroom</span></div>
         </a>
         
-        <!-- 2. Social Media Posters card (NOW SECOND) -->
+        <!-- 2. Social Media Posters card -->
         <a href="#" onclick="openPostersPage(event)" class="work-card-creative" id="postersLink">
           <div class="work-icon"><i class="fas fa-palette"></i></div>
           <h4>Social Media Posters</h4>
@@ -658,7 +658,7 @@
           <div class="work-tags"><span>CapCut</span><span>Photoshop</span></div>
         </a>
         
-        <!-- 4. Brand Identity card (NOW FOURTH) -->
+        <!-- 4. Brand Identity card -->
         <a href="https://www.behance.net/gallery/236449205/Full-Branding-Package" target="_blank" class="work-card-creative" id="brandIdentityLink">
           <div class="work-icon"><i class="fas fa-crown"></i></div>
           <h4>Brand Identity</h4>
@@ -979,7 +979,6 @@
     document.getElementById('jewelCatalogLink').addEventListener('click', openSamplePage);
     document.getElementById('instagramEditsLink').addEventListener('click', openVideosPage);
     document.getElementById('postersLink').addEventListener('click', openPostersPage);
-    // Brand identity link is external, no need to prevent default
 
     // Ensure page starts at top
     window.onload = function() {
